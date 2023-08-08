@@ -61,19 +61,16 @@ public class Main {
 
         JButton generatePasswordButton = new JButton("Generate Password");
         generatePasswordButton.setBounds(10, 220, 380, 40);
-        generatePasswordButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                boolean useAlphabetic = alphabeticCheckBox.isSelected();
-                boolean useNumeric = numericCheckBox.isSelected();
-                boolean useSpecial = specialCheckBox.isSelected();
-                int sizeOfPassword = sizeSlider.getValue();
+        generatePasswordButton.addActionListener(e -> {
+            boolean useAlphabetic = alphabeticCheckBox.isSelected();
+            boolean useNumeric = numericCheckBox.isSelected();
+            boolean useSpecial = specialCheckBox.isSelected();
+            int sizeOfPassword = sizeSlider.getValue();
 
-                if (!useAlphabetic && !useNumeric && !useSpecial) {
-                    JOptionPane.showMessageDialog(frame, "Please select at least one type of characters!", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    passwordTextArea.setText(generatePassword(useAlphabetic, useNumeric, useSpecial, sizeOfPassword));
-                }
+            if (!useAlphabetic && !useNumeric && !useSpecial) {
+                JOptionPane.showMessageDialog(frame, "Please select at least one type of characters!", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                passwordTextArea.setText(generatePassword(useAlphabetic, useNumeric, useSpecial, sizeOfPassword));
             }
         });
         frame.add(generatePasswordButton);
